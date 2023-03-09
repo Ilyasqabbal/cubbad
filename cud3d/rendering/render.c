@@ -6,7 +6,7 @@
 /*   By: iqabbal <iqabbal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 14:53:54 by iqabbal           #+#    #+#             */
-/*   Updated: 2023/03/08 01:31:48 by iqabbal          ###   ########.fr       */
+/*   Updated: 2023/03/09 04:29:14 by iqabbal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void render_ciel(int top,t_data *data,double columid,int color){
 
 void render_floor(int bottom,t_data *data,double columid,int color)
 {
-    bottom--;
+    //bottom--;
     while(bottom  < 600/40)
     {
         dsquare(data,columid * 40,bottom* 40,color,40);
@@ -91,20 +91,19 @@ void render_floor(int bottom,t_data *data,double columid,int color)
     }
 }
 
-void render_wall(int top,int bottom,t_data *data,double columid)
+void render_wall(int top,int bottom,t_data *data,double columid,int color)
 {
-    top++;
+    //top++;
     while(top <= bottom)
     {
        // mlx_pixel_put(data->mlx, data->mlx_win,columid * 40 ,top * 40,0xFF00000);
-        draw_square(data,columid * 40 ,top * 40);
+        dsquare(data,columid * 40,bottom* 40,color,40);
         top++;
     }
 }
 void render(t_data *data,t_rays *r)
 {
     
-    printf("heeeelo\n");
     t_render *render;
     render = init_struct_render(data,r);
     double top;
@@ -112,7 +111,7 @@ void render(t_data *data,t_rays *r)
 
     top = (data->height / 2) - (render->wall_stripe_height / 2);
     bottom = (render->wall_stripe_height) + top + top;
-   //render_ciel(top,data,r->columid,0xFFFFFF);
-    render_wall(top,bottom,data,r->columid);
+    render_ciel(top,data,r->columid,0x0000FF);
+    render_wall(top,bottom,data,r->columid,0xFFFFFFF);
     render_floor(bottom,data,r->columid,0x00FFFFF);
 }

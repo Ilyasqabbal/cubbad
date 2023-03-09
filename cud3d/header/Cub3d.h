@@ -6,7 +6,7 @@
 /*   By: iqabbal <iqabbal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 17:29:32 by iqabbal           #+#    #+#             */
-/*   Updated: 2023/03/08 02:24:46 by iqabbal          ###   ########.fr       */
+/*   Updated: 2023/03/09 06:12:31 by iqabbal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void        first_intersection_horizontal(t_data *data,t_first *first,double ray
 double      horizontal_intersection(t_data *data, double ray_angle);
 void        first_intersection_vertical(t_data *data,t_first *first,double ray_angle);
 double      vertical_intersection(t_data *data, double ray_angle);
-int check_wall(t_data *data,double x,double y,int check,int face);
+int	check_wall(t_data *data,t_first *first, int check, int face);
 double      return_distance(double x1,double x2,double y1,double y2);
 bool        is_facing_up(double ray_angle);
 bool        is_facing_left(double ray_angle);
@@ -85,5 +85,6 @@ double      normalize_angle(double angle);
 void        put_pixel(t_data *data,void(*f)(t_data *));
 double correction_angele(double ray_angle);
 
+double correction_anglev(double ray_angle);
 void dsquare(t_data *data,int x,int y,int color,int draw);
 #endif
