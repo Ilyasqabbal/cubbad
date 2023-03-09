@@ -6,7 +6,7 @@
 /*   By: iqabbal <iqabbal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 19:28:03 by iqabbal           #+#    #+#             */
-/*   Updated: 2023/03/08 02:25:19 by iqabbal          ###   ########.fr       */
+/*   Updated: 2023/03/09 08:15:28 by iqabbal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ void drawRay(t_data *data, double X0, double Y0, double X1, double Y1, double an
 		X0 += Xinc;
 		Y0 += Yinc;
 	}
+    check_wall1(data,X0,Y0,angle);
 }
 
 void draw_point(t_data *data)
