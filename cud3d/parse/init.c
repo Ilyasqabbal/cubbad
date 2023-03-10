@@ -1,22 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   move_reight.c                                      :+:      :+:    :+:   */
+/*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iqabbal <iqabbal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/21 17:17:55 by iqabbal           #+#    #+#             */
-/*   Updated: 2023/03/10 02:41:31 by iqabbal          ###   ########.fr       */
+/*   Created: 2023/01/31 16:53:28 by anaji-el          #+#    #+#             */
+/*   Updated: 2023/03/10 01:11:36 by iqabbal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../header/move.h"
+#include "../header/Cub3d.h"
 
-void move_reight(t_data *data)
+void	init_s(t_data *data)
 {
-    if(check_next_position(data,MOVE_RIGHT))
-    {
-        data->player->x -= data->player->speed * cos(data->player->angle - (M_PI/2));
-        data->player->y -= data->player->speed * sin(data->player->angle - (M_PI/2));
-    }
+	data->no = NULL;
+	data->so = NULL;
+	data->ea = NULL;
+	data->we = NULL;
+	data->map = NULL;
+	data->floor[0] = -1;
+	data->floor[1] = -1;
+	data->floor[2] = -1;
+	data->ciel[0] = -1;
+	data->ciel[1] = -1;
+	data->ciel[2] = -1;
+	data->maximum_line = -1;
+	data->number_of_lines = -1;
 }

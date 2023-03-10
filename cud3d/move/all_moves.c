@@ -6,7 +6,7 @@
 /*   By: iqabbal <iqabbal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 19:28:03 by iqabbal           #+#    #+#             */
-/*   Updated: 2023/03/09 08:15:28 by iqabbal          ###   ########.fr       */
+/*   Updated: 2023/03/10 03:05:35 by iqabbal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,11 @@ void draw_square(t_data *data,int x,int y)
         {
             if(j % 40 == 0 || i % 40 == 0 )
             {
-                mlx_pixel_put(data->mlx, data->mlx_win, xd, yd,0x0000000);
+                
             }
             else if(j % 40 == 39  || i % 40 == 39)
             {
-                mlx_pixel_put(data->mlx, data->mlx_win, xd, yd,0x0000000);
+                mlx_pixel_put(data->mlx, data->mlx_win, xd, yd,0xFF00000);
             }
             j++;
             xd++;
@@ -70,8 +70,10 @@ void drawRay(t_data *data, double X0, double Y0, double X1, double Y1, double an
 void draw_point(t_data *data)
 {
     int i = 0;
-    int x = data->player->x;
-    int y = data->player->y;
+    int x = data->player->x * 40;
+    int y = data->player->y * 40;
+    printf("x -- is : %d\n",x);
+    printf("y -- is : %d\n",y);
     while(i < 6)
     {
         mlx_pixel_put(data->mlx,data->mlx_win,x + i,y,0x00000000);
@@ -92,7 +94,7 @@ void put_pixel(t_data *data,void(*f)(t_data *))
         f(data);
     //mlx_clear_window(data->mlx,data->mlx_win);
     //cast_All_rays(data);
-  //  put_img_to_window(data);
+    put_img_to_window(data);
    //draw_line1(data);
    //draw_a_ray(data);
     

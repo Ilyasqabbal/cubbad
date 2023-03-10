@@ -6,7 +6,7 @@
 /*   By: iqabbal <iqabbal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 00:45:59 by iqabbal           #+#    #+#             */
-/*   Updated: 2023/03/09 08:20:20 by iqabbal          ###   ########.fr       */
+/*   Updated: 2023/03/10 00:23:48 by iqabbal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,10 @@
 
 double	normalize_angle(double angle)
 {
-	while (angle < 0)
-	{
-        angle+= 2  * M_PI;
-		
-	}
+	angle = fmod(angle, (2 * M_PI));
+	if (angle < 0)
+		angle = angle + (2 * M_PI);
+	return (angle);
 	return (angle);
 }
 

@@ -6,7 +6,7 @@
 /*   By: iqabbal <iqabbal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 17:17:38 by iqabbal           #+#    #+#             */
-/*   Updated: 2023/03/08 01:27:45 by iqabbal          ###   ########.fr       */
+/*   Updated: 2023/03/10 02:42:14 by iqabbal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,33 +15,31 @@
 #define CHECK 40
 int check_next_position(t_data *data,int flag)
 {
-    t_player    *player;
     int         x;
     int         y;
     
     x = 0;
     y = 0;
-    player = data->player;
     if(flag == MOVE_RIGHT)
     {
-          x = ((*player).x - (*player).speed * cos(player->angle - (M_PI/2))) / CHECK;
-          y = ((*player).y - (*player).speed * sin(player->angle - (M_PI/2))) / CHECK;
+          x = (data->player->x - data->player->speed * cos(data->player->angle - (M_PI/2))) / CHECK;
+          y = (data->player->y - data->player->speed * sin(data->player->angle - (M_PI/2))) / CHECK;
          
     }
     else if(flag == MOVE_LEFT )
     {
-          x = ((*player).x + (*player).speed * cos(player->angle - (M_PI/2))) / CHECK;
-          y = ((*player).y + (*player).speed * sin(player->angle - (M_PI/2))) / CHECK;
+          x = (data->player->x + data->player->speed * cos(data->player->angle - (M_PI/2))) / CHECK;
+          y = (data->player->y + data->player->speed * sin(data->player->angle - (M_PI/2))) / CHECK;
     }
     else if(flag == MOVE_UP)
     {
-         x = ((*player).x + (*player).speed * cos(player->angle)) / CHECK ;
-         y = ((*player).y + (*player).speed * sin(player->angle)) / CHECK;
+         x = (data->player->x + data->player->speed * cos(data->player->angle)) / CHECK ;
+         y = (data->player->y + data->player->speed * sin(data->player->angle)) / CHECK;
     }
     else if(flag == MOVE_DOWN)
     {
-         x = ((*player).x - (*player).speed * cos(player->angle)) / CHECK ;
-         y = ((*player).y - (*player).speed * sin(player->angle)) / CHECK;
+         x = (data->player->x - data->player->speed * cos(data->player->angle)) / CHECK ;
+         y = (data->player->y - data->player->speed * sin(data->player->angle)) / CHECK;
     }
     if(data->map[y][x] == '0')
          return(1);
@@ -51,11 +49,9 @@ int check_next_position(t_data *data,int flag)
 
 void move_down(t_data *data)
 {
-    t_player *player;
-    player = data->player;
    if(check_next_position(data,MOVE_DOWN))
    {
-        (*player).y = (*player).y - (*player).speed * sin(player->angle);
-        (*player).x = (*player).x - (*player).speed * cos(player->angle);
+        data->player->y = data->player->y - data->player->speed * sin(data->player->angle);
+        data->player->x = data->player->x - data->player->speed * cos(data->player->angle);
    }
 }

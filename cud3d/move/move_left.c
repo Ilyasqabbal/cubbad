@@ -6,7 +6,7 @@
 /*   By: iqabbal <iqabbal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 17:17:51 by iqabbal           #+#    #+#             */
-/*   Updated: 2023/03/02 22:23:30 by iqabbal          ###   ########.fr       */
+/*   Updated: 2023/03/10 02:41:40 by iqabbal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,9 @@
 
 void move_left(t_data *data)
 {
-    t_player *player;
-    player = data->player;
     if(check_next_position(data,MOVE_LEFT))
     {
-       (*player).x =  (*player).x + (*player).speed * cos(player->angle - (M_PI/2));
-       (*player).y =  (*player).y + (*player).speed * sin(player->angle - (M_PI/2));
+       data->player->x =  data->player->x + data->player->speed * cos(data->player->angle - (M_PI/2));
+       data->player->y =  data->player->y + data->player->speed * sin(data->player->angle - (M_PI/2));
     }
 }
