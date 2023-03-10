@@ -6,7 +6,7 @@
 /*   By: iqabbal <iqabbal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 17:29:32 by iqabbal           #+#    #+#             */
-/*   Updated: 2023/03/10 01:46:15 by iqabbal          ###   ########.fr       */
+/*   Updated: 2023/03/10 10:12:53 by iqabbal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,17 @@ typedef struct s_var
 	int		p;
 }t_var;
 
+typedef struct s_mlx
+{
+	void	*ptr;
+	void	*img;
+	void	*win;
+	char	*addr;
+	int		endian;
+	int		line_length;
+	int		bits_per_pixel;
+}			t_mlx;
+
 typedef struct data{
     //player
     t_player    *player;
@@ -68,7 +79,13 @@ typedef struct data{
     double h_ray_dis_y;
     double v_ray_dis_x;
     double v_ray_dis_y;
+    double width_window;
+    double height_window;
+    bool checker;
+    double angle_to_draw;
     t_position	position;
+     int  cor;
+    t_mlx			mlx_;
 }t_data;
 
 typedef struct first_intersection{
@@ -142,5 +159,7 @@ void dsquare(t_data *data,int x,int y,int color,int draw);
 int	checkiswall(t_data *data, double v_x, double v_y, int check, int face);
 
 
+void	my_mlx_pixel_put(t_data *cor, int i, int j);
+double correction_anglev(double ray_angle);
 void	player_position_(t_data *data);
 #endif

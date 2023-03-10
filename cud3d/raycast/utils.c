@@ -6,7 +6,7 @@
 /*   By: iqabbal <iqabbal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 00:45:59 by iqabbal           #+#    #+#             */
-/*   Updated: 2023/03/10 00:23:48 by iqabbal          ###   ########.fr       */
+/*   Updated: 2023/03/10 03:10:40 by iqabbal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,8 +91,6 @@ int check_wall1(t_data *data,double x,double y,int ray_angle)
         check_y *=-1;
     if(check_y == -2147483648)
         check_y = 10;
-    printf("x is : %d\n",check_x);
-    printf("y is : %d\n",check_y);
     if(check_y < h)
     {
     //if(data->map[check_y][check_x] == '1')

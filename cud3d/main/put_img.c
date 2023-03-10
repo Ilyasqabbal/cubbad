@@ -6,7 +6,7 @@
 /*   By: iqabbal <iqabbal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 17:16:33 by iqabbal           #+#    #+#             */
-/*   Updated: 2023/03/10 02:44:46 by iqabbal          ###   ########.fr       */
+/*   Updated: 2023/03/10 04:18:26 by iqabbal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,17 +32,24 @@ int put_img_to_window(t_data *data)
                 mlx_put_image_to_window(data->mlx,data->mlx_win,data->img_wall,j * v ,i*v);
             else if(data->map[i][j] == '0')
                 mlx_put_image_to_window(data->mlx,data->mlx_win,data->img_floor,j * v,i*v);
-            else if(data->map[i][j] == 'E')
+            else if((data->map[i][j] == 'E' || data->map[i][j] == 'S' || data->map[i][j] == 'N' || data->map[i][j] == 'W' ) && data->checker == false)
             {
                  draw_point(data);
                  mlx_put_image_to_window(data->mlx,data->mlx_win,data->img_floor,j * v,i*v);
+                 data->checker = true;
             }
+            else if ((data->map[i][j] == 'E' || data->map[i][j] == 'S' || data->map[i][j] == 'N' || data->map[i][j] == 'W' )&& data->checker == true)
+            {
+                data->map[i][j] = '0';
+            }
+            else if(data->checker == true)
+                 draw_point(data);
             j++;
         }
         i++;
     }
     drawRay(data, data->player->x * data->size, data->player->y *data->size, data->player->x * data->size, data->player->y * data->size,data->player->angle, data->size,0x00000000);
-   cast_All_rays(data);
+    cast_All_rays(data);
     
     return(0);
 }

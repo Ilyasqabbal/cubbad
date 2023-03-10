@@ -6,7 +6,7 @@
 /*   By: iqabbal <iqabbal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 00:45:28 by iqabbal           #+#    #+#             */
-/*   Updated: 2023/03/10 02:39:03 by iqabbal          ###   ########.fr       */
+/*   Updated: 2023/03/10 10:14:40 by iqabbal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,29 +25,31 @@ double to_radian(double d)
 void cast_All_rays(t_data *data)
 {
     t_rays r;
-    r.number_rays  = 60;
+    r.number_rays  = data->width_window;
     r.fov = 60;
     //data->player->angle = 180;
     r.ray_angle = data->player->angle - to_radian(r.fov/2);
     int i = 0;
+    mlx_clear_window(data->mlx,data->mlx_win);
    while(i < r.number_rays )
    {
+        data->angle_to_draw = r.ray_angle;
         double hz = horizontal_intersection(data,r.ray_angle);
         double vrt = vertical_intersection(data,r.ray_angle);
-            if(hz > vrt)
-            {
-                 r.ray_distance = vrt;
-                 drawRay(data,data->player->x  * data->size ,data->player->y * data->size ,data->player->x * data->size ,data->player->y * data->size ,r.ray_angle,r.ray_distance,0x0000FF);
-            }
-            else
-            {
-               r.ray_distance = hz;      
-                drawRay(data,data->player->x  * data->size ,data->player->y * data->size ,data->player->x * data->size ,data->player->y * data->size ,r.ray_angle,r.ray_distance,0x0000FF);
-            }
-            // printf("distance for printting is : %f\n",r.ray_distance);
-        //drawRay(data,data->player->x,data->player->y,data->player->x,data->player->y,r.ray_angle,r.ray_distance,0x0000FF);
+        if(hz > vrt)
+        {
+                r.ray_distance = vrt;
+                data->cor = 1;
+                //drawRay(data,data->player->x ,data->player->y ,data->player->x ,data->player->y ,r.ray_angle,r.ray_distance,0x0000FF);
+        }
+        else
+        {
+            data->cor = 2;
+            r.ray_distance = hz;      
+            //drawRay(data,data->player->x ,data->player->y ,data->player->x ,data->player->y,r.ray_angle,r.ray_distance,0x0000FF);
+        }
         r.columid = i;
-        //render(data,&r);
+        render(data,&r);
         r.ray_angle += to_radian(r.fov)/r.number_rays ;
         i++;
   }

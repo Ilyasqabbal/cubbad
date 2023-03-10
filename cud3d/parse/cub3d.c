@@ -6,7 +6,7 @@
 /*   By: iqabbal <iqabbal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 23:51:19 by anaji-el          #+#    #+#             */
-/*   Updated: 2023/03/10 02:39:40 by iqabbal          ###   ########.fr       */
+/*   Updated: 2023/03/10 04:34:02 by iqabbal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -189,13 +189,11 @@ void init_angle(t_data *data)
 void init_player(t_data *data)
 {
 	init_angle(data);
-	
 	data->player->speed = 10;
     data->player->rotate_speed = to_radian(5);
-	player_position_(data);
 	data->size = 40;
-	printf("player x is : %f\n",data->player->x);
-	printf("player y is : %f\n",data->player->y);
+	player_position_(data);
+	data->checker = false;
 }
 
 int main(int ac, char **av)
@@ -206,16 +204,16 @@ int main(int ac, char **av)
 
 	if (ac == 2 && check_arg(av[1]))
 	{
-
+		data.height_window = 500;
+		data.width_window = 500;
 		init_s(&data);
 		file = read_file(av);
 		parsing(&data, file);
 		print_map(&data,data.map);
 		data.mlx = mlx_init();
-		data.mlx_win = mlx_new_window(data.mlx, 1000 , 1000, "Hello world!");
+		data.mlx_win = mlx_new_window(data.mlx, data.height_window , data.width_window, "Hello world!");
 		init_player(&data);
 		put_img_to_window(&data);
-		// draw_line1(&data);
 		mlx_loop_hook(data.mlx, &put_img_to_window, &data);
 		mlx_hook(data.mlx_win,2,0,&all_moves,&data);
 		mlx_loop(data.mlx);

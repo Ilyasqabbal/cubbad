@@ -12,8 +12,16 @@ PARSE = parse/cub3d.c \
 	gnl/get_next_line.c \
 	gnl/get_next_line_utils.c \
 
-MOVES = move/all_moves.c move/move_up.c move/move_down.c move/move_left.c move/move_reight.c move/player_position.c raycast/cast_rays.c raycast/find_horizontal.c raycast/find_vertical.c raycast/utils.c rendering/render.c
-SRC =  main/put_img.c $(MOVES) $(PARSE)
+RENDERING = rendering/render.c \
+			rendering/mini_map.c \
+			rendering/render_ciel.c \
+			rendering/render_floor.c \
+			rendering/render_wall.c \
+			rendering/tools.c \
+			
+RAYCAST = raycast/cast_rays.c raycast/find_horizontal.c raycast/find_vertical.c raycast/utils.c 
+MOVES = move/all_moves.c move/move_up.c move/move_down.c move/move_left.c move/move_reight.c move/player_position.c 
+SRC =  main/put_img.c $(MOVES) $(PARSE) $(RENDERING) $(RAYCAST)
 INCL = header/Cub3d.h header/move.h rendering/rendering.h
 
 CC = gcc
