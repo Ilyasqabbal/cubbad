@@ -6,7 +6,7 @@
 /*   By: iqabbal <iqabbal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 00:45:28 by iqabbal           #+#    #+#             */
-/*   Updated: 2023/03/10 10:14:40 by iqabbal          ###   ########.fr       */
+/*   Updated: 2023/03/11 04:55:20 by iqabbal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,22 +30,29 @@ void cast_All_rays(t_data *data)
     //data->player->angle = 180;
     r.ray_angle = data->player->angle - to_radian(r.fov/2);
     int i = 0;
-    mlx_clear_window(data->mlx,data->mlx_win);
+    double hz;
+    double vrt;
+    // mlx_clear_window(data->mlx,data->mlx_win);
+    create_img(data);
    while(i < r.number_rays )
    {
         data->angle_to_draw = r.ray_angle;
-        double hz = horizontal_intersection(data,r.ray_angle);
-        double vrt = vertical_intersection(data,r.ray_angle);
+        hz = horizontal_intersection(data,r.ray_angle);
+        vrt = vertical_intersection(data,r.ray_angle);
         if(hz > vrt)
         {
                 r.ray_distance = vrt;
+                r.x = data->v_ray_dis_x;
+                r.y = data->v_ray_dis_y;
                 data->cor = 1;
                 //drawRay(data,data->player->x ,data->player->y ,data->player->x ,data->player->y ,r.ray_angle,r.ray_distance,0x0000FF);
         }
         else
         {
             data->cor = 2;
-            r.ray_distance = hz;      
+            r.ray_distance = hz;
+            r.x = data->h_ray_dis_x;
+            r.y = data->h_ray_dis_y;    
             //drawRay(data,data->player->x ,data->player->y ,data->player->x ,data->player->y,r.ray_angle,r.ray_distance,0x0000FF);
         }
         r.columid = i;
@@ -53,14 +60,21 @@ void cast_All_rays(t_data *data)
         r.ray_angle += to_radian(r.fov)/r.number_rays ;
         i++;
   }
+    mlx_put_image_to_window(data->mlx, data->mlx_win, data->img.img_window, 0, 0);
+	mlx_destroy_image (data->mlx, data->img.img_window);
 
 }
 
-//90= inf
-//270 inf
- //0 = 0
- //180  =0 
- //360 = 0
+//90= inf horizental
+//270 inf horizental
+ //0 = 0 vertical
+ //180  =0 vertical 
+
+
+
+        // if(to_degree(r.ray_angle) == 90 || to_degree(r.ray_angle) == 180 || to_degree(r.ray_angle) == 270 || to_degree(r.ray_angle) == 0 )
+        // {);
+        //  printf("The distance is : %f",r.ray_distance);}
 
 
 

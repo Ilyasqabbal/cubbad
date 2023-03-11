@@ -6,7 +6,7 @@
 /*   By: iqabbal <iqabbal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 19:28:03 by iqabbal           #+#    #+#             */
-/*   Updated: 2023/03/10 09:27:27 by iqabbal          ###   ########.fr       */
+/*   Updated: 2023/03/11 04:20:16 by iqabbal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ void put_pixel(t_data *data,void(*f)(t_data *))
     if(f != NULL)
         f(data);
     mlx_clear_window(data->mlx,data->mlx_win);
-    put_img_to_window(data);
+    //put_img_to_window(data);
     cast_All_rays(data);
     //draw_point(data);
    //draw_line1(data);

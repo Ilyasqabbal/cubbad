@@ -6,7 +6,7 @@
 /*   By: iqabbal <iqabbal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 17:29:32 by iqabbal           #+#    #+#             */
-/*   Updated: 2023/03/10 10:12:53 by iqabbal          ###   ########.fr       */
+/*   Updated: 2023/03/11 04:54:11 by iqabbal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,23 @@ typedef struct s_mlx
 	int		bits_per_pixel;
 }			t_mlx;
 
+typedef struct s_img{
+        void *img_window;
+        char *add_img;
+        int				bit_pixel;
+	    int				line_len;
+	    int				endian;
+        
+}t_img;
+typedef struct s_img1{
+        void *img_window;
+        unsigned int  *add_img;
+        int				bit_pixel;
+	    int				line_len;
+	    int				endian;
+        
+}t_img1;
+
 typedef struct data{
     //player
     t_player    *player;
@@ -85,7 +102,10 @@ typedef struct data{
     double angle_to_draw;
     t_position	position;
      int  cor;
-    t_mlx			mlx_;
+    t_img  img;
+    t_img1 img1;
+
+   
 }t_data;
 
 typedef struct first_intersection{
@@ -110,6 +130,10 @@ typedef struct s_rays{
     double fov ;
     double number_rays;
     double columid;
+    double x;
+    double y;
+
+    
 }t_rays;
 
 
@@ -159,7 +183,7 @@ void dsquare(t_data *data,int x,int y,int color,int draw);
 int	checkiswall(t_data *data, double v_x, double v_y, int check, int face);
 
 
-void	my_mlx_pixel_put(t_data *cor, int i, int j);
+
 double correction_anglev(double ray_angle);
 void	player_position_(t_data *data);
 #endif

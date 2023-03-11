@@ -6,7 +6,7 @@
 /*   By: iqabbal <iqabbal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 14:43:44 by iqabbal           #+#    #+#             */
-/*   Updated: 2023/03/10 10:09:51 by iqabbal          ###   ########.fr       */
+/*   Updated: 2023/03/11 03:23:28 by iqabbal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,8 @@ int mini_map(t_data *data);
 t_render *init_struct_render(t_data *data,t_rays *ra);
 double calcul_stripe_height(t_data *data,t_render *r,double distance_proj_plan,int di);
 double calcul_proj_plan(t_data *data,t_render *r);
+
+//img
+void create_img(t_data *data);
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 #endif

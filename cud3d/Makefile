@@ -18,6 +18,7 @@ RENDERING = rendering/render.c \
 			rendering/render_floor.c \
 			rendering/render_wall.c \
 			rendering/tools.c \
+			rendering/my_mlx_rendring.c \
 			
 RAYCAST = raycast/cast_rays.c raycast/find_horizontal.c raycast/find_vertical.c raycast/utils.c 
 MOVES = move/all_moves.c move/move_up.c move/move_down.c move/move_left.c move/move_reight.c move/player_position.c 
