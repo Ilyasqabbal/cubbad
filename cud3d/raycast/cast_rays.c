@@ -6,7 +6,7 @@
 /*   By: iqabbal <iqabbal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 00:45:28 by iqabbal           #+#    #+#             */
-/*   Updated: 2023/03/11 04:55:20 by iqabbal          ###   ########.fr       */
+/*   Updated: 2023/03/11 08:40:14 by iqabbal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,16 @@ void cast_All_rays(t_data *data)
     create_img(data);
    while(i < r.number_rays )
    {
-        data->angle_to_draw = r.ray_angle;
+    if(r.ray_angle == to_radian(to_degree(0)) || r.ray_angle == to_radian(to_degree(90)) || r.ray_angle == to_radian(to_degree(180)) )
+    {
+        hz = horizontal_intersection(data,r.ray_angle + to_radian(2));
+        vrt = vertical_intersection(data,r.ray_angle + to_radian(2));
+    }
+    else
+    {
         hz = horizontal_intersection(data,r.ray_angle);
         vrt = vertical_intersection(data,r.ray_angle);
+    }
         if(hz > vrt)
         {
                 r.ray_distance = vrt;

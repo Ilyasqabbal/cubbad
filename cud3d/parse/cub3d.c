@@ -6,7 +6,7 @@
 /*   By: iqabbal <iqabbal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 23:51:19 by anaji-el          #+#    #+#             */
-/*   Updated: 2023/03/11 05:50:23 by iqabbal          ###   ########.fr       */
+/*   Updated: 2023/03/11 08:35:10 by iqabbal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -213,7 +213,7 @@ int main(int ac, char **av)
 		print_map(&data,data.map);
 		data.mlx = mlx_init();
 		data.mlx_win = mlx_new_window(data.mlx, data.height_window , data.width_window, "Cub3d");
-		data.img.img_window  =  mlx_xpm_file_to_image(data.mlx, "/Users/iqabbal/Desktop/cuba-main/cud3d/img/xpm/floor.xpm", &w, &h);
+		data.img.img_window  =  mlx_xpm_file_to_image(data.mlx, "/Users/iqabbal/Desktop/cuba-main/cud3d/img/xpm/red.xpm", &w, &h);
 		if(w != 40 || h != 40)
 			exit(1);
 		data.img1.add_img = (unsigned int *)mlx_get_data_addr(data.img.img_window , \
