@@ -6,7 +6,7 @@
 /*   By: iqabbal <iqabbal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 17:18:16 by iqabbal           #+#    #+#             */
-/*   Updated: 2023/03/08 01:31:37 by iqabbal          ###   ########.fr       */
+/*   Updated: 2023/03/12 05:05:30 by iqabbal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@
 typedef struct data t_data;
 
 typedef struct player{
-    double x;
-    double y;
+    float x;
+    float y;
     double angle;
     double speed;
     double rotate_speed;

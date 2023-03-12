@@ -6,7 +6,7 @@
 /*   By: iqabbal <iqabbal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 00:45:28 by iqabbal           #+#    #+#             */
-/*   Updated: 2023/03/12 04:50:31 by iqabbal          ###   ########.fr       */
+/*   Updated: 2023/03/12 04:58:46 by iqabbal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,17 +42,17 @@ void cast_All_rays(t_data *data)
         {
                 r.ray_distance = vrt;
                 r.x = data->v_ray_dis_x;
+                printf("the distance is : %f\n",r.ray_distance);
                 r.y = data->v_ray_dis_y;
                 data->cor = 1;
-                //drawRay(data,data->player->x ,data->player->y ,data->player->x ,data->player->y ,r.ray_angle,r.ray_distance,0x0000FF);
         }
         else
         {
             data->cor = 2;
             r.ray_distance = hz;
+            
             r.x = data->h_ray_dis_x;
             r.y = data->h_ray_dis_y;    
-            //drawRay(data,data->player->x ,data->player->y ,data->player->x ,data->player->y,r.ray_angle,r.ray_distance,0x0000FF);
         }
         r.columid = i;
         render(data,&r);
@@ -68,13 +68,6 @@ void cast_All_rays(t_data *data)
 //270 inf horizental
  //0 = 0 vertical
  //180  =0 vertical 
-
-
-
-        // if(to_degree(r.ray_angle) == 90 || to_degree(r.ray_angle) == 180 || to_degree(r.ray_angle) == 270 || to_degree(r.ray_angle) == 0 )
-        // {);
-        //  printf("The distance is : %f",r.ray_distance);}
-
 
 
 
