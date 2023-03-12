@@ -6,7 +6,7 @@
 /*   By: iqabbal <iqabbal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 00:45:59 by iqabbal           #+#    #+#             */
-/*   Updated: 2023/03/12 05:15:18 by iqabbal          ###   ########.fr       */
+/*   Updated: 2023/03/12 05:21:12 by iqabbal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,6 @@ double return_distance(double x1,double x2,double y1,double y2)
     double dy = y2 - y1;
     dy = pow(dy,2);
     double res = sqrt(dx + dy);
-    printf("res distance is : %f\n",res);
     return(res);
 }
 
