@@ -6,7 +6,7 @@
 /*   By: iqabbal <iqabbal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 14:43:37 by iqabbal           #+#    #+#             */
-/*   Updated: 2023/03/12 04:53:50 by iqabbal          ###   ########.fr       */
+/*   Updated: 2023/03/12 05:31:07 by iqabbal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,10 @@ t_render *init_struct_render(t_data *data,t_rays *ra)
     r->widht = data->width_window;
     r->height = data->height_window;
     r->fov = ra->fov / 2;
-    r->ray_distance =  ra->ray_distance * cos(ra->ray_angle - data->player->angle);  //cos(correction_anglev(ra->ray_angle));
+    r->ray_distance =  ra->ray_distance * cos(ra->ray_angle - data->player->angle);
     r->size = data->size;
     r->distance_proj_plan = calcul_proj_plan(data,r);
     r->wall_stripe_height = calcul_stripe_height(data,r,r->distance_proj_plan,ra->columid);
     return(r);
     
 }
-//i hiya colium id

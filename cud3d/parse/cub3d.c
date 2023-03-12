@@ -6,7 +6,7 @@
 /*   By: iqabbal <iqabbal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 23:51:19 by anaji-el          #+#    #+#             */
-/*   Updated: 2023/03/12 04:51:28 by iqabbal          ###   ########.fr       */
+/*   Updated: 2023/03/12 05:39:37 by iqabbal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -190,7 +190,7 @@ void init_player(t_data *data)
 {
 	init_angle(data);
 	data->player->speed = 10;
-    //data->player->rotate_speed = to_radian(5);
+    data->player->rotate_speed = to_radian(10);
 	data->size = 40;
 	player_position_(data);
 	data->checker = false;
@@ -199,7 +199,7 @@ void init_player(t_data *data)
 int main(int ac, char **av)
 {
 	t_data	data;
-	// int h, w;
+	int h, w;
 	char	**file;
 	(void)av;
 
@@ -213,11 +213,11 @@ int main(int ac, char **av)
 		//print_map(&data,data.map);
 		data.mlx = mlx_init();
 		data.mlx_win = mlx_new_window(data.mlx, data.height_window , data.width_window, "Cub3d");
-		// data.img.img_window  =  mlx_xpm_file_to_image(data.mlx, "/Users/iqabbal/Desktop/cuba-main/cud3d/img/xpm/red.xpm", &w, &h);
-		// if(w != 40 || h != 40)
-		// 	exit(1);
-		// data.img1.add_img = (unsigned int *)mlx_get_data_addr(data.img.img_window , \
-		// &data.img1.bit_pixel, &data.img1.line_len, &data.img1.endian);
+		data.img.img_window  =  mlx_xpm_file_to_image(data.mlx, "/Users/iqabbal/Desktop/Cub3d/cud3d/img/xpm/red.xpm", &w, &h);
+		if(w != 40 || h != 40)
+			exit(1);
+		data.img1.add_img = (unsigned int *)mlx_get_data_addr(data.img.img_window , \
+		&data.img1.bit_pixel, &data.img1.line_len, &data.img1.endian);
 
 		init_player(&data);
 		put_img_to_window(&data);

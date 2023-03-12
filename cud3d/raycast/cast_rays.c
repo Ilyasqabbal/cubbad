@@ -6,7 +6,7 @@
 /*   By: iqabbal <iqabbal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 00:45:28 by iqabbal           #+#    #+#             */
-/*   Updated: 2023/03/12 04:58:46 by iqabbal          ###   ########.fr       */
+/*   Updated: 2023/03/12 05:24:36 by iqabbal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ void cast_All_rays(t_data *data)
         {
                 r.ray_distance = vrt;
                 r.x = data->v_ray_dis_x;
-                printf("the distance is : %f\n",r.ray_distance);
                 r.y = data->v_ray_dis_y;
                 data->cor = 1;
         }
@@ -64,10 +63,6 @@ void cast_All_rays(t_data *data)
 
 }
 
-//90= inf horizental
-//270 inf horizental
- //0 = 0 vertical
- //180  =0 vertical 
 
 
 

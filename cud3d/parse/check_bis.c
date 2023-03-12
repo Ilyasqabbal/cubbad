@@ -6,7 +6,7 @@
 /*   By: iqabbal <iqabbal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 23:53:35 by anaji-el          #+#    #+#             */
-/*   Updated: 2023/03/10 03:28:17 by iqabbal          ###   ########.fr       */
+/*   Updated: 2023/03/12 05:29:26 by iqabbal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,8 +120,9 @@ void	player_position_(t_data *data)
 			if (data->map[i][j] == 'N' || data->map[i][j] == 'E'
 				|| data->map[i][j] == 'W' || data->map[i][j] == 'S')
 			{
-				data->player->x = j * data->size;
-				data->player->y = i * data->size;
+				data->player->x = j * data->size + (data->size/2);
+				data->player->y = i * data->size + (data->size/2);
+				data->map[i][j] = '0';
 			}
 			j++;
 		}
