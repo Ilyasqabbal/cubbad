@@ -6,7 +6,7 @@
 /*   By: iqabbal <iqabbal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 19:28:03 by iqabbal           #+#    #+#             */
-/*   Updated: 2023/03/11 04:20:16 by iqabbal          ###   ########.fr       */
+/*   Updated: 2023/03/12 04:49:21 by iqabbal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,18 +115,14 @@ int all_moves(int key,void *param)
         put_pixel(data,move_reight);
     if(key == ROW_RIGHT)
     {
-        data->player->angle = to_degree(data->player->angle);
-        data->player->angle += 10;
-        data->player->angle = (int)round(data->player->angle) % 360;
-        data->player->angle = to_radian(data->player->angle);
+        data->player->angle += 0.174533;
+        data->player->angle = fmod(data->player->angle,360.00);
 
     }
     if(key == ROW_LEFT)
     {
-        data->player->angle = to_degree(data->player->angle);
-        data->player->angle -= 10;
-        data->player->angle = (int)round(data->player->angle) % 360;
-        data->player->angle = to_radian(data->player->angle);
+        data->player->angle -= 0.174533;
+        data->player->angle = fmod(data->player->angle,360.00);
 
     }
     return(0);

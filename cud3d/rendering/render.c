@@ -6,7 +6,7 @@
 /*   By: iqabbal <iqabbal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 14:53:54 by iqabbal           #+#    #+#             */
-/*   Updated: 2023/03/11 05:51:51 by iqabbal          ###   ########.fr       */
+/*   Updated: 2023/03/12 04:05:12 by iqabbal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,30 +40,24 @@ void render(t_data *data,t_rays *r)
     t_render *render;
     render = init_struct_render(data,r);
     double top;
-    double bottom;
+    
     int i = 0;
     
-     top = (data->height_window / 2) - ((render->wall_stripe_height) / 2);
-     bottom =  top + render->wall_stripe_height - 1;
+        top = (data->height_window / 2) - ((render->wall_stripe_height) / 2);
         while (i < top )
         {
             my_mlx_pixel_put(data,r->columid, i,0xFFFFFFF);
             i++;
         }
-        // while (i < top + render->wall_stripe_height )
-        // {
-        //     my_mlx_pixel_put(data,r->columid,i,0x00000000);
-        //     i++;
-        // }
-        
-        ft_wall(data, r->columid, top, bottom, r);
-        // printf("bf %d\n",i);
-        // i = bottom - 1;
-        // printf("af %d\n",i);
-        while (bottom < data->height_window )
+        while (i < top + render->wall_stripe_height )
         {
-            my_mlx_pixel_put(data,r->columid,bottom,0xFFFFFFF);
-            bottom++;
+            my_mlx_pixel_put(data,r->columid,i,0x00000000);
+            i++;
+        }
+        while (i < data->height_window )
+        {
+            my_mlx_pixel_put(data,r->columid,i,0xFFFFFFF);
+            i++;
         }
       
     

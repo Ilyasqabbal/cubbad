@@ -6,7 +6,7 @@
 /*   By: iqabbal <iqabbal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 00:45:31 by iqabbal           #+#    #+#             */
-/*   Updated: 2023/03/11 04:53:55 by iqabbal          ###   ########.fr       */
+/*   Updated: 2023/03/12 04:05:36 by iqabbal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,16 +38,14 @@ double horizontal_intersection(t_data *data, double ray_angle)
 	first.y = floor(data->player->y / 40) * 40;
 	if ((ray_angle > 0 && ray_angle < M_PI))
 		first.y += 40;
-    if(to_degree(ray_angle) != 0  && to_degree(ray_angle) !=180)
-		first.x = data->player->x + (first.y - data->player->y) / tan(ray_angle);
+	first.x = data->player->x + (first.y - data->player->y) / tan(ray_angle);
 	stepy = 40;
 	if (!(ray_angle > 0 && ray_angle < M_PI))
 	{
 		stepy *= -1;
 		check = -1;
 	}
-	if(to_degree(ray_angle) != 0  && to_degree(ray_angle) !=180)
-		stepx = stepy / tan(ray_angle);
+	stepx = stepy / tan(ray_angle);
 	if ((ray_angle < 0.5 * M_PI || ray_angle > 1.5 * M_PI) && stepx < 0)
 		stepx *= -1;
 	if (!(ray_angle < 0.5 * M_PI || ray_angle > 1.5 * M_PI) && stepx > 0)

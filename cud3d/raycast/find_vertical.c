@@ -6,7 +6,7 @@
 /*   By: iqabbal <iqabbal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 00:45:35 by iqabbal           #+#    #+#             */
-/*   Updated: 2023/03/11 08:01:03 by iqabbal          ###   ########.fr       */
+/*   Updated: 2023/03/12 04:40:32 by iqabbal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,17 +62,13 @@ double vertical_intersection(t_data *data, double ray_angle)
 	first.x = floor(data->player->x / data->size) * data->size;
 	if ((ray_angle < 0.5 * M_PI || ray_angle > 1.5 * M_PI))
 		first.x += data->size;
-	if(to_degree(ray_angle) !=90  && to_degree(ray_angle) !=270)
-		first.y = data->player->y + (first.x - data->player->x) * tan(ray_angle);
-	else
-		return(1000000);
+	first.y = data->player->y + (first.x - data->player->x) * tan(ray_angle);
 	stepx = data->size;
 	if (!(ray_angle < 0.5 * M_PI || ray_angle > 1.5 * M_PI))
 	{
 		stepx *= -1;
 		check = -1;
 	}
-	if(to_degree(ray_angle) !=90  && to_degree(ray_angle) !=270)
 		stepy = stepx * tan(ray_angle);
 	if (!(ray_angle > 0 && ray_angle < M_PI) && stepy > 0)
 		stepy *= -1;

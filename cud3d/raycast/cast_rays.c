@@ -6,7 +6,7 @@
 /*   By: iqabbal <iqabbal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 00:45:28 by iqabbal           #+#    #+#             */
-/*   Updated: 2023/03/11 08:40:14 by iqabbal          ###   ########.fr       */
+/*   Updated: 2023/03/12 04:50:31 by iqabbal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,8 @@ void cast_All_rays(t_data *data)
 {
     t_rays r;
     r.number_rays  = data->width_window;
-    r.fov = 60;
-    //data->player->angle = 180;
-    r.ray_angle = data->player->angle - to_radian(r.fov/2);
+    r.fov = M_PI / 3;
+    r.ray_angle = data->player->angle - r.fov/2;
     int i = 0;
     double hz;
     double vrt;
@@ -36,16 +35,9 @@ void cast_All_rays(t_data *data)
     create_img(data);
    while(i < r.number_rays )
    {
-    if(r.ray_angle == to_radian(to_degree(0)) || r.ray_angle == to_radian(to_degree(90)) || r.ray_angle == to_radian(to_degree(180)) )
-    {
-        hz = horizontal_intersection(data,r.ray_angle + to_radian(2));
-        vrt = vertical_intersection(data,r.ray_angle + to_radian(2));
-    }
-    else
-    {
+
         hz = horizontal_intersection(data,r.ray_angle);
         vrt = vertical_intersection(data,r.ray_angle);
-    }
         if(hz > vrt)
         {
                 r.ray_distance = vrt;
@@ -64,7 +56,7 @@ void cast_All_rays(t_data *data)
         }
         r.columid = i;
         render(data,&r);
-        r.ray_angle += to_radian(r.fov)/r.number_rays ;
+        r.ray_angle += r.fov/r.number_rays ;
         i++;
   }
     mlx_put_image_to_window(data->mlx, data->mlx_win, data->img.img_window, 0, 0);

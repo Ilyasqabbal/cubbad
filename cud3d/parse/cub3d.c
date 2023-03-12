@@ -6,7 +6,7 @@
 /*   By: iqabbal <iqabbal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 23:51:19 by anaji-el          #+#    #+#             */
-/*   Updated: 2023/03/11 08:35:10 by iqabbal          ###   ########.fr       */
+/*   Updated: 2023/03/12 04:51:28 by iqabbal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -177,20 +177,20 @@ void init_angle(t_data *data)
 {
 	data->player = malloc(sizeof(t_player));
 	if(get_angle_player(data) == 1)
-		data->player->angle = to_radian(270);
+		data->player->angle = 3 * M_PI / 2;
 	else if(get_angle_player(data) == 2)
-		data->player->angle = to_radian(0);
+		data->player->angle = 0;
 	else if(get_angle_player(data) == 3)
-		data->player->angle = to_radian(180);
+		data->player->angle = M_PI;
 	else if(get_angle_player(data) == 4)
-		data->player->angle = to_radian(90);
+		data->player->angle = M_PI/2;
 	
 }
 void init_player(t_data *data)
 {
 	init_angle(data);
 	data->player->speed = 10;
-    data->player->rotate_speed = to_radian(5);
+    //data->player->rotate_speed = to_radian(5);
 	data->size = 40;
 	player_position_(data);
 	data->checker = false;
@@ -199,7 +199,7 @@ void init_player(t_data *data)
 int main(int ac, char **av)
 {
 	t_data	data;
-	int h, w;
+	// int h, w;
 	char	**file;
 	(void)av;
 
@@ -210,17 +210,17 @@ int main(int ac, char **av)
 		init_s(&data);
 		file = read_file(av);
 		parsing(&data, file);
-		print_map(&data,data.map);
+		//print_map(&data,data.map);
 		data.mlx = mlx_init();
 		data.mlx_win = mlx_new_window(data.mlx, data.height_window , data.width_window, "Cub3d");
-		data.img.img_window  =  mlx_xpm_file_to_image(data.mlx, "/Users/iqabbal/Desktop/cuba-main/cud3d/img/xpm/red.xpm", &w, &h);
-		if(w != 40 || h != 40)
-			exit(1);
-		data.img1.add_img = (unsigned int *)mlx_get_data_addr(data.img.img_window , \
-		&data.img1.bit_pixel, &data.img1.line_len, &data.img1.endian);
+		// data.img.img_window  =  mlx_xpm_file_to_image(data.mlx, "/Users/iqabbal/Desktop/cuba-main/cud3d/img/xpm/red.xpm", &w, &h);
+		// if(w != 40 || h != 40)
+		// 	exit(1);
+		// data.img1.add_img = (unsigned int *)mlx_get_data_addr(data.img.img_window , \
+		// &data.img1.bit_pixel, &data.img1.line_len, &data.img1.endian);
 
 		init_player(&data);
-		//put_img_to_window(&data);
+		put_img_to_window(&data);
 		mlx_loop_hook(data.mlx, &put_img_to_window, &data);
 		mlx_hook(data.mlx_win,2,0,&all_moves,&data);
 		mlx_loop(data.mlx);
